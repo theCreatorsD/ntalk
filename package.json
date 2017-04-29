@@ -1,12 +1,12 @@
 {
-  "name": "signuptuts",
+  "name": "ntalk",
   "version": "1.0.0",
-  "description": "",
-  "main": "signup.js",
+  "description": "It's an web solution to argue eachother",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "theCreatorsD",
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
@@ -21,5 +21,18 @@
     "morgan": "^1.8.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thecreatorsd/ntalk.git"
+  },
+  "keywords": [
+    "argue",
+    "wrangle"
+  ],
+  "bugs": {
+    "url": "https://github.com/thecreatorsd/ntalk/issues"
+  },
+  "homepage": "https://github.com/thecreatorsd/ntalk#readme"
 }
