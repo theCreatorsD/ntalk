@@ -1,6 +1,5 @@
 <!-- views/index.ejs -->
 <!doctype html>
-<!doctype html>
 <html>
   <head>
     <title>Node Authentication</title>
@@ -20,7 +19,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">나투나 톡!</a>
+        <a class="navbar-brand" href="/">나누다 톡!</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -58,25 +57,15 @@
     <div class="container">
       <div class="jumbotron text-center">
         <p><small><%=topic.title%></small></p><h3><%=issue.title%></h3>
+        <p>
+          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" name="button">찬성글 쓰기</button>
+
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal" name="button">반대글 쓰기</button>
+        </p>
       </div>
     </div>
 
-    <% if(user != null) {%>
 
-    <div class="container">
-      <form action="/topic/<%= topic.id %>/<%=issue.id%>" method="post">
-        <div class="form-group">
-          <label>Add Argument</label><br>
-          <p><input type="radio" name="stance" value="true"> I agree <input type="radio" name="stance" value="false"> I disagree</p>
-
-          <input type="text" class="form-control" placeholder="Title" name="title"><br>
-          <textarea rows="8" class="form-control" name="contents">
-          </textarea><br>
-          <button type="submit" class="btn btn-warning">submit</button>
-        </div>
-      </form>
-    </div>
-    <% } %>
     <% if(arguments != null) { %>
     <div class="container">
       <div class="col-sm-6">
@@ -117,6 +106,48 @@
       </div>
     </div>
     <% } %>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form action="/topic/<%= topic.id %>/<%=issue.id%>" method="post">
+            <div class="form-group">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">토론 글쓰기</h4>
+              </div>
+              <div class="modal-body">
+                <input type="text" class="form-control" placeholder="제목" name="title"><br>
+                <textarea rows="8" class="form-control" name="contents">
+                </textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+                <button type="submit" class="btn btn-primary">글 올리기</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <% if(user != null) {%>
+
+    <div class="container">
+      <form action="/topic/<%= topic.id %>/<%=issue.id%>" method="post">
+        <div class="form-group">
+          <label>Add Argument</label><br>
+          <p><input type="radio" name="stance" value="true"> I agree <input type="radio" name="stance" value="false"> I disagree</p>
+
+          <input type="text" class="form-control" placeholder="Title" name="title"><br>
+          <textarea rows="8" class="form-control" name="contents">
+          </textarea><br>
+          <button type="submit" class="btn btn-warning">submit</button>
+        </div>
+      </form>
+    </div>
+    <% } %>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/js/bootstrap.min.js"></script>
