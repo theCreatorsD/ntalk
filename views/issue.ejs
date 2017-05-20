@@ -57,11 +57,14 @@
     <div class="container">
       <div class="jumbotron text-center">
         <p><small><%=topic.title%></small></p><h3><%=issue.title%></h3>
-        <p>
-          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" name="button">찬성글 쓰기</button>
+        <% if(user && user._id != null) { %>
+          <p>
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal_agree" name="button">찬성글 쓰기</button>
 
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal" name="button">반대글 쓰기</button>
-        </p>
+            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modal_disagree" name="button">반대글 쓰기</button>
+          </p>
+        <% } %>
+
       </div>
     </div>
 
@@ -69,7 +72,7 @@
     <% if(arguments != null) { %>
     <div class="container">
       <div class="col-sm-6">
-        <% for(i = 0 ; i < arguments.length ; i ++) { %>
+        <% for(i = (arguments.length - 1) ; i >= 0 ; i --) { %>
           <% if(arguments[i].stance) { %>
           <div class="panel panel-primary">
             <div class="panel-heading">
@@ -79,15 +82,22 @@
             <%=arguments[i].contents%>
             </div>
             <div class="panel-footer">
-              <p class="text-left"><%=arguments[i].author%></p>
-              <p class="text-right"><%=arguments[i].date.getFullYear() + "/" + (arguments[i].date.getMonth() + 1) +"/"+ arguments[i].date.getDate() + " " + arguments[i].date.getHours() + ":" + arguments[i].date.getMinutes()%></p>
+              <div class="row">
+                <div class="col-xs-6">
+                  <%=arguments[i].author%>
+                </div>
+                <div class="col-xs-6 text-right">
+                  <%=arguments[i].date.getFullYear() + "/" + (arguments[i].date.getMonth() + 1) +"/"+ arguments[i].date.getDate() + " " + arguments[i].date.getHours() + ":" + arguments[i].date.getMinutes()%>
+                </div>
+              </div>
             </div>
           </div>
           <% } %>
         <% } %>
       </div>
+
       <div class="col-sm-6">
-        <% for(i = 0 ; i < arguments.length ; i ++) { %>
+        <% for(i = (arguments.length - 1) ; i >= 0 ; i --) { %>
           <% if(!arguments[i].stance) { %>
             <div class="panel panel-danger">
               <div class="panel-heading">
@@ -97,8 +107,14 @@
               <%=arguments[i].contents%>
               </div>
               <div class="panel-footer">
-                <p class="text-left"><%=arguments[i].author%></p>
-                <p class="text-right"><%=arguments[i].date.getFullYear() + "/" + (arguments[i].date.getMonth() + 1) +"/"+ arguments[i].date.getDate() + " " + arguments[i].date.getHours() + ":" + arguments[i].date.getMinutes()%></p>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <%=arguments[i].author%>
+                  </div>
+                  <div class="col-xs-6 text-right">
+                    <%=arguments[i].date.getFullYear() + "/" + (arguments[i].date.getMonth() + 1) +"/"+ arguments[i].date.getDate() + " " + arguments[i].date.getHours() + ":" + arguments[i].date.getMinutes()%>
+                  </div>
+                </div>
               </div>
             </div>
           <% } %>
@@ -107,19 +123,19 @@
     </div>
     <% } %>
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="modal_agree" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <form action="/topic/<%= topic.id %>/<%=issue.id%>" method="post">
             <div class="form-group">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">토론 글쓰기</h4>
+                <h4 class="modal-title" id="myModalLabel">찬성 글쓰기</h4>
+                <input type="hidden" name="stance" value="true">
               </div>
               <div class="modal-body">
                 <input type="text" class="form-control" placeholder="제목" name="title"><br>
-                <textarea rows="8" class="form-control" name="contents">
-                </textarea>
+                <textarea rows="8" class="form-control" name="contents"></textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
@@ -131,22 +147,31 @@
       </div>
     </div>
 
-    <% if(user != null) {%>
-
-    <div class="container">
-      <form action="/topic/<%= topic.id %>/<%=issue.id%>" method="post">
-        <div class="form-group">
-          <label>Add Argument</label><br>
-          <p><input type="radio" name="stance" value="true"> I agree <input type="radio" name="stance" value="false"> I disagree</p>
-
-          <input type="text" class="form-control" placeholder="Title" name="title"><br>
-          <textarea rows="8" class="form-control" name="contents">
-          </textarea><br>
-          <button type="submit" class="btn btn-warning">submit</button>
+    <div class="modal fade" id="modal_disagree" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form action="/topic/<%= topic.id %>/<%=issue.id%>" method="post">
+            <div class="form-group">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">반대 글쓰기</h4>
+                <input type="hidden" name="stance" value="false">
+              </div>
+              <div class="modal-body">
+                <input type="text" class="form-control" placeholder="제목" name="title"><br>
+                <textarea rows="8" class="form-control" name="contents"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+                <button type="submit" class="btn btn-primary">글 올리기</button>
+              </div>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
-    <% } %>
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
