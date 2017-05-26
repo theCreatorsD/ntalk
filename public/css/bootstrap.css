@@ -36,6 +36,18 @@ summary {
   line-height: 60px;
   background-color: #3498DB;
 }
+.step__icon {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: #FFCC66;
+  border-radius: 50%;
+}
+.i_icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
 audio,
 canvas,
 progress,

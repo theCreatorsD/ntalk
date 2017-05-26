@@ -57,9 +57,22 @@
 <div class="container">
   <% for (var i = 0 ; i < topics.length ; i ++) { %>
     <a href="/topic/<%= topics[i].id %>">
-      <div class="jumbotron text-center">
-        <h1><%= topics[i].title %></h1>
-        <p><%= topics[i].description %></p>
+      <div class="row">
+        <div class="row__parallel-sm row__parallel-md row__parallel-lg">
+          <div class="col-sm-7 col-sm-pull-5 col-md-8 col-md-pull-4">
+            <div class="jumbotron text-left">
+              <h2><%= topics[i].title %></h2>
+              <p><%= topics[i].description %></p>
+            </div>
+          </div>
+          <div class="col-sm-5 col-sm-push-7 col-md-4 col-md-push-8">
+            <div class="step__icon">
+              <div class="i_icon">
+                icon
+              </div>
+            </div>
+          </div>
+        </div>        
       </div>
     </a>
   <% } %>
