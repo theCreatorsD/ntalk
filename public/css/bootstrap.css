@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -26,6 +27,26 @@ nav,
 section,
 summary {
   display: block;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #3498DB;
+}
+.step__icon {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: #FFCC66;
+  border-radius: 50%;
+}
+.i_icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
 }
 audio,
 canvas,
@@ -4272,6 +4293,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-width: 1px 0 0;
 }
 .navbar-brand {
+  font-family: 'Jeju Hallasan', serif;
   float: left;
   height: 50px;
   padding: 15px 15px;
@@ -4493,11 +4515,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
+  background-color: #9ACCEF;
+  border-color: #9ACCEF;
 }
 .navbar-default .navbar-brand {
-  color: #777;
+  color: #FFFFFF;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
@@ -4505,10 +4527,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
 }
 .navbar-default .navbar-text {
-  color: #777;
+  color: #FFFFFF;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #777;
+  color: #FFFFFF;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
