@@ -2,8 +2,8 @@
 <!doctype html>
 <html>
   <head>
-    <title>Node Authentication</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <title>나누다 톡!</title>
+    <link rel="stylesheet" href="/css/bootstrap.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
 
   </head>
@@ -25,7 +25,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <% if(user && user.local.isTeacher) { %>
+          <% if(user != null && user.local.isTeacher) { %>
               <li><a href="/addtopic">논제 더하기</a></li>
             <% } %>
           </ul>
@@ -45,7 +45,7 @@
           </ul>
           </li>
         <% } else {%>
-          <li><a href="/login">로그인 하기</a></li>
+          <li><a href="/login">로그인하기</a></li>
         <% } %>
       </ul>
         </div><!-- /.navbar-collapse -->
@@ -54,7 +54,7 @@
 
 <!-- nav end -->
     <div class="container">
-      <div class="jumbotron text-center">
+      <div class="jumbotron_title text-center">
         <h1><%= topic.title %></h1>
         <p><%= topic.description %></p>
         <%= console.log(issues.length) %>
@@ -86,7 +86,7 @@
       <% if (issues.length == 1) { %>
         <div class="col-md-12">
           <a href="/topic/<%=topic._id%>/<%=issues[0]._id%>">
-            <div class="jumbotron text-center">
+            <div class="jumbotron_title text-center">
               <h3><%=issues[0].title%></h3>
             </div>
           </a>
@@ -97,7 +97,7 @@
         <% for (i = 0 ; i < 2 ; i++) { %>
           <div class="col-md-6">
             <a href="/topic/<%=topic._id%>/<%=issues[i]._id%>">
-              <div class="jumbotron text-center">
+              <div class="jumbotron_title text-center">
                 <h3><%=issues[i].title%></h3>
               </div>
             </a>
@@ -117,6 +117,7 @@
         <% } %>
       <% } %>
     </div>
+
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

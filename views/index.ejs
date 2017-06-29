@@ -2,8 +2,8 @@
 <!doctype html>
 <html>
   <head>
-    <title>Node Authentication</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <title>나누다 톡!</title>
+    <link rel="stylesheet" href="/css/bootstrap.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
 
   </head>
@@ -53,17 +53,36 @@
     </nav>
 
 <!-- nav end -->
+<div class="fluid img-back">
+  <img src="/img/ntalk_main.jpg" alt="main" class="img-responsive center-block img-back">
+</div>
+
 
 <div class="container">
   <% for (var i = 0 ; i < topics.length ; i ++) { %>
     <a href="/topic/<%= topics[i].id %>">
-      <div class="jumbotron text-center">
-        <h1><%= topics[i].title %></h1>
-        <p><%= topics[i].description %></p>
+      <div class="row">
+          <div class="col-sm-12">
+            <div class="jumbotron_card text-center">
+              <h2><%= topics[i].title %></h2>
+              <p><%= topics[i].description %></p>
+            </div>
+          </div>
       </div>
     </a>
   <% } %>
 </div>
+
+<!--
+<footer class="footer">
+  <div class="container">
+    hello I'm footer
+  </div>
+</footer> -->
+
+
+
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="/js/bootstrap.min.js"></script>
