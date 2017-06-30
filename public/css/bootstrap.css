@@ -9,6 +9,7 @@ html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
+  min-width: 500px;
 
 }
 .img-back {
@@ -5519,9 +5520,15 @@ button.list-group-item-danger.active:focus {
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
           box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
+.break-word {
+  width: inherit;
+  overflow-wrap: break-word;
+}
+
 .panel-body {
   padding: 15px;
-  white-space: pre;
+  display: block;
+  white-space: pre-wrap;
 }
 .panel-heading {
   padding: 10px 15px;
