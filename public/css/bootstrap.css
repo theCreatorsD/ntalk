@@ -2676,6 +2676,7 @@ input[type="search"] {
   margin-top: 15px;
   padding: 20px;
   background-color: #fff;
+  box-shadow: 6px 6px 3px rgba(0,0,0,0.3);
 }
 .radio,
 .checkbox {
@@ -5018,10 +5019,10 @@ a.badge:focus {
   padding-right: 30px;
   margin-bottom: 30px;
   color: inherit;
-  box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
-  -moz-box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
-  -webkit-box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
-  -o-box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
+  box-shadow: 6px 6px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow: 6px 6px 3px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 6px 6px 3px rgba(0,0,0,0.3);
+  -o-box-shadow: 6px 6px 3px rgba(0,0,0,0.3);
   background-color: #fff;
 }
 
@@ -5033,10 +5034,10 @@ a.badge:focus {
   margin-bottom: 30px;
   margin-top: 30px;
   color: inherit;
-  box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
-  -moz-box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
-  -webkit-box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
-  -o-box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
+  box-shadow: 6px 6px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow: 6px 6px 3px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 6px 6px 3px rgba(0,0,0,0.3);
+  -o-box-shadow: 6px 6px 3px rgba(0,0,0,0.3);
   background-color: #fff;
 }
 .jumbotron h1,
@@ -5528,9 +5529,9 @@ button.list-group-item-danger.active:focus {
   margin-bottom: 20px;
   background-color: #fff;
   border: 1px solid transparent;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-          box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  border-radius: 1px;
+  -webkit-box-shadow: 6px 6px 3px rgba(0,0,0,0.3);
+  box-shadow: 6px 6px 3px rgba(0,0,0,0.3);
 }
 .break-word {
   width: inherit;
@@ -5542,11 +5543,12 @@ button.list-group-item-danger.active:focus {
   display: block;
   white-space: pre-wrap;
 }
+
 .panel-heading {
   padding: 10px 15px;
   border-bottom: 1px solid transparent;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
 }
 .panel-heading > .dropdown .dropdown-toggle {
   color: inherit;
@@ -5568,8 +5570,8 @@ button.list-group-item-danger.active:focus {
   padding: 10px 15px;
   background-color: #f5f5f5;
   border-top: 1px solid #ddd;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 1px;
+  border-bottom-left-radius: 1px;
 }
 .panel > .list-group,
 .panel > .panel-collapse > .list-group {

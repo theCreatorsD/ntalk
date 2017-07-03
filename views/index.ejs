@@ -58,16 +58,12 @@
 </div>
 
 
-<div class="container">
+<div class="col-md-12">
   <% for (var i = 0 ; i < topics.length ; i ++) { %>
     <a href="/topic/<%= topics[i].id %>">
-      <div class="row">
-          <div class="col-md-12">
-            <div class="jumbotron_card text-center">
-              <h2><%= topics[i].title %></h2>
-              <p><%= topics[i].description %></p>
-            </div>
-          </div>
+      <div class="jumbotron_card text-center">
+          <h2><%= topics[i].title %></h2>
+          <p><%= topics[i].description %></p>        
       </div>
     </a>
   <% } %>

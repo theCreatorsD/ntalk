@@ -54,7 +54,9 @@
 
 <!-- nav end -->
 
-    <div class="container">
+    <div class="col-sm-12">
+
+
       <div class="jumbotron_title text-center">
         <p><small><%=topic.title%></small></p><h3><%=issue.title%></h3>
         <% if(user && user._id != null) { %>
@@ -70,8 +72,9 @@
 
 
     <% if(arguments != null) { %>
-    <div class="container">
-      <div class="col-lg-6">
+
+
+      <div class="col-sm-6">
         <% for(i = (arguments.length - 1) ; i >= 0 ; i --) { %>
           <% if(arguments[i].stance) { %>
           <div class="panel panel-primary">
@@ -86,10 +89,10 @@
                 </div>
               </div>
             </div>
-            <div class="panel-body break-word"><%=arguments[i].contents%></div>
+            <div class="panel-body break-word"><p><%=arguments[i].contents%></p></div>
             <div class="panel-footer">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-sm-6">
                   <%=arguments[i].author%>
                 </div>
                 <div class="col-md-6 text-right">
@@ -102,7 +105,7 @@
         <% } %>
       </div>
 
-      <div class="col-lg-6">
+      <div class="col-sm-6">
         <% for(i = (arguments.length - 1) ; i >= 0 ; i --) { %>
           <% if(!arguments[i].stance) { %>
             <div class="panel panel-danger">
@@ -117,10 +120,10 @@
                   </div>
                 </div>
               </div>
-              <div class="panel-body break-word"><%=arguments[i].contents%></div>
+              <div class="panel-body break-word"><p><%=arguments[i].contents%></p></div>
               <div class="panel-footer">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-sm-6">
                     <%=arguments[i].author%>
                   </div>
                   <div class="col-md-6 text-right">
@@ -132,7 +135,7 @@
           <% } %>
         <% } %>
       </div>
-    </div>
+
     <% } %>
 
     <div class="modal fade" id="modal_agree" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

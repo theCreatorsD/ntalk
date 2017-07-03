@@ -53,7 +53,7 @@
     </nav>
 
 <!-- nav end -->
-    <div class="container">
+    <div class="col-lg-12">
       <div class="jumbotron_title text-center">
         <h1><%= topic.title %></h1>
         <p><%= topic.description %></p>
@@ -62,7 +62,7 @@
     </div>
     <% if(user != null && user.local.isTeacher) {%>
 
-    <div class="container">
+    <div class="col-lg-12">
       <form action="/topic/<%= topic.id %>" method="post">
         <div class="form-group">
           <label>쟁점 더하기</label>
@@ -79,7 +79,9 @@
       </form>
     </div>
     <% } %>
-    <div class="container">
+
+    
+    <div class="col-lg-12">
       <% if (issues.length == 0) { %>
       <% } %>
 

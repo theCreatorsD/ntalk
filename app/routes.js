@@ -50,10 +50,6 @@ module.exports = function(app, passport, mongoose) {
       })
     })
   })
-
-
-
-
     // ADDTOPIC
     app.get('/addtopic', function(req, res) {
       console.log(req.user);
