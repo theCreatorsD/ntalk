@@ -4322,7 +4322,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   font-family: 'Jeju Hallasan', serif;
   float: left;
   height: 60px;
-  padding: 20px 15px;
+  padding: 0px 0px;
   font-size: 27px;
   line-height: 20px;
 }
