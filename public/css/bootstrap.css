@@ -5018,6 +5018,10 @@ a.badge:focus {
   padding-right: 30px;
   margin-bottom: 30px;
   color: inherit;
+  box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
+  -moz-box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
+  -webkit-box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
+  -o-box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
   background-color: #fff;
 }
 
@@ -5029,6 +5033,10 @@ a.badge:focus {
   margin-bottom: 30px;
   margin-top: 30px;
   color: inherit;
+  box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
+  -moz-box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
+  -webkit-box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
+  -o-box-shadow: 6px 6px 3px rgba(0,0,0,0.6);
   background-color: #fff;
 }
 .jumbotron h1,
