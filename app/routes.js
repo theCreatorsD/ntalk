@@ -86,15 +86,32 @@ module.exports = function(app, passport, mongoose) {
           if (err) {
             throw err
           } else {
-            _argument.proser.push(req.body.user) 
-            _argument.save(function (err, _argument) {
-              if (err) {
-                return console.error(err);
-              } else {
-                console.log(_argument.proser)
-                res.redirect('/topic/' + _topic.id + '/' + _issue._id + '#' + req.params.argument_id)
+            if (_argument.proser.indexOf(req.body.user) >= 0) {
+              console.log("exists");
+              var index = _argument.proser.indexOf(req.body.user)
+              if (index > -1) {
+                _argument.proser.splice(index, 1)
               }
-            })
+              _argument.save(function (err, _argument) {
+                if (err) {
+                  return console.error(err);
+                } else {
+                  console.log("redirecting to the issue")
+                  res.redirect('/topic/' + _topic.id + '/' + _issue._id + '#' + req.params.argument_id)
+                }
+              })
+            } else {
+              console.log("does not exist");
+              _argument.proser.push(req.body.user)
+              _argument.save(function (err, _argument) {
+                if (err) {
+                  return console.error(err);
+                } else {
+                  console.log("redirecting to the issue")
+                  res.redirect('/topic/' + _topic.id + '/' + _issue._id + '#' + req.params.argument_id)
+                }
+              })
+            }
             // res.redirect('/topic/' + _topic.id + '/' + _issue._id + '#' + req.params.argument_id)
           }
         })

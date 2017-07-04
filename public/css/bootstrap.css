@@ -15,6 +15,10 @@ html {
 .img-back {
   background-color: #5fa4ff;
 }
+
+.heart {
+  color: #a00;
+}
 .space {
   margin: 10px;
 }
@@ -5554,9 +5558,9 @@ button.list-group-item-danger.active:focus {
   color: inherit;
 }
 .panel-title {
-  margin-top: 0;
+  margin-top: 8px;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 1.1em;
   color: inherit;
 }
 .panel-title > a,

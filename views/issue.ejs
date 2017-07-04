@@ -86,17 +86,17 @@
                 <% if(user && user._id != null) { %>
                   <form action="/topic/<%=topic._id%>/<%=issue._id%>/<%=arguments[i].id%>" method="post">
                     <input type="hidden" name="user" value="<%=user._id%>">
-                    <div class="col-md-2 text-right">
-                      <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
-                      <button type="submit" name="button">
-                        <%=arguments[i].pros%>
-                      </button>
-                    </div>
+                      <div class="col-md-2 text-right heart">
+                        <button type="submit" name="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
+                          <%=arguments[i].proser.length%>
+                        </button>
+                      </div>
                   </form>
                 <% } else {%>
-                  <div class="col-md-2 text-right">
+                  <div class="col-md-2 text-right heart">
                     <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
-                      <%=arguments[i].pros%>
+                      <%=arguments[i].proser.length%>
                   </div>
                 <% } %>
               </div>
@@ -129,17 +129,17 @@
                   <% if(user && user._id != null) { %>
                     <form action="/topic/<%=topic._id%>/<%=issue._id%>/<%=arguments[i].id%>" method="post">
                       <input type="hidden" name="user" value="<%=user._id%>">
-                      <div class="col-md-2 text-right">
-                        <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
-                        <button type="submit" name="button">
-                          <%=arguments[i].pros%>
-                        </button>
-                      </div>
+                        <div class="col-md-2 text-right heart">
+                          <button type="submit" name="button" class="btn btn-default">
+                          <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
+                            <%=arguments[i].proser.length%>
+                          </button>
+                        </div>
                     </form>
                   <% } else {%>
-                    <div class="col-md-2 text-right">
+                    <div class="col-md-2 text-right heart">
                       <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
-                        <%=arguments[i].pros%>
+                        <%=arguments[i].proser.length%>
                     </div>
                   <% } %>
                 </div>
