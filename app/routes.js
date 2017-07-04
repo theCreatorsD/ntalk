@@ -50,27 +50,47 @@ module.exports = function(app, passport, mongoose) {
       })
     })
   })
-    // ADDTOPIC
-    app.get('/addtopic', function(req, res) {
-      console.log(req.user);
-      if(req.user.local.isTeacher) {
-        res.render('addtopic.ejs', { user : req.user })
-      } else {
-        res.redirect('/')
+  // ADDTOPIC
+  app.get('/addtopic', function(req, res) {
+    console.log(req.user);
+    if(req.user.local.isTeacher) {
+      res.render('addtopic.ejs', { user : req.user })
+    } else {
+      res.redirect('/')
+    }
+  })
+
+  app.post('/addtopic', function(req, res) {
+    var topic = new Topic()
+    topic.title = req.body.title
+    topic.description = req.body.desc
+    topic.save(function(err, topic) {
+      if (err) {
+        return console.error(err)
       }
     })
+    res.redirect('/')
+  })
 
-    app.post('/addtopic', function(req, res) {
-      var topic = new Topic()
-      topic.title = req.body.title
-      topic.description = req.body.desc
-      topic.save(function(err, topic) {
+  // ADDHEART
+  app.post('/topic/:topic_id/:issue_id/:argument_id', function(req, res) {
+    Topic.findById(req.params.topic_id, function(err, _topic) {
+      if (err) {
+        throw err
+      }
+      Issue.findById(req.params.issue_id, function(err, _issue) {
         if (err) {
-          return console.error(err)
+          throw err
         }
+        Argument.findById(req.params.argument_id, function(err, _argument) {
+          if (err) {
+            throw err
+          }
+          console.log("post success")
+        })
       })
-      res.redirect('/')
     })
+  })
 
 
 

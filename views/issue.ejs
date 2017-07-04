@@ -83,10 +83,15 @@
                 <div class="col-md-10">
                   <h3 class="panel-title"><%=arguments[i].title%></h3>
                 </div>
+                <form action="/topic/<%=topic._id%>/<%=issue._id%>/<%=arguments[i].id%>" method="post">
                 <div class="col-md-2 text-right">
                   <span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+                  <button type="submit" name="button">
                   <%=arguments[i].pros%>
+                  </button>
                 </div>
+
+                </form>
               </div>
             </div>
             <div class="panel-body break-word"><p><%=arguments[i].contents%></p></div>
