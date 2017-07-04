@@ -85,14 +85,22 @@ module.exports = function(app, passport, mongoose) {
         Argument.findById(req.params.argument_id, function(err, _argument) {
           if (err) {
             throw err
+          } else {
+            _argument.proser.push(req.body.user) 
+            _argument.save(function (err, _argument) {
+              if (err) {
+                return console.error(err);
+              } else {
+                console.log(_argument.proser)
+                res.redirect('/topic/' + _topic.id + '/' + _issue._id + '#' + req.params.argument_id)
+              }
+            })
+            // res.redirect('/topic/' + _topic.id + '/' + _issue._id + '#' + req.params.argument_id)
           }
-          console.log("post success")
         })
       })
     })
   })
-
-
 
 
   // ADDISSUE
@@ -109,7 +117,7 @@ module.exports = function(app, passport, mongoose) {
           return console.error(err)
         }
       })
-      console.log(_topic.id);
+
       res.redirect('/topic/' + _topic.id)
     })
   })

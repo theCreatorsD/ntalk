@@ -77,21 +77,28 @@
       <div class="col-sm-6">
         <% for(i = (arguments.length - 1) ; i >= 0 ; i --) { %>
           <% if(arguments[i].stance) { %>
-          <div class="panel panel-primary">
+          <div class="panel panel-primary" id="<%=arguments[i]._id%>">
             <div class="panel-heading">
               <div class="row">
                 <div class="col-md-10">
                   <h3 class="panel-title"><%=arguments[i].title%></h3>
                 </div>
-                <form action="/topic/<%=topic._id%>/<%=issue._id%>/<%=arguments[i].id%>" method="post">
-                <div class="col-md-2 text-right">
-                  <span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
-                  <button type="submit" name="button">
-                  <%=arguments[i].pros%>
-                  </button>
-                </div>
-
-                </form>
+                <% if(user && user._id != null) { %>
+                  <form action="/topic/<%=topic._id%>/<%=issue._id%>/<%=arguments[i].id%>" method="post">
+                    <input type="hidden" name="user" value="<%=user._id%>">
+                    <div class="col-md-2 text-right">
+                      <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
+                      <button type="submit" name="button">
+                        <%=arguments[i].pros%>
+                      </button>
+                    </div>
+                  </form>
+                <% } else {%>
+                  <div class="col-md-2 text-right">
+                    <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
+                      <%=arguments[i].pros%>
+                  </div>
+                <% } %>
               </div>
             </div>
             <div class="panel-body break-word"><p><%=arguments[i].contents%></p></div>
@@ -113,16 +120,28 @@
       <div class="col-sm-6">
         <% for(i = (arguments.length - 1) ; i >= 0 ; i --) { %>
           <% if(!arguments[i].stance) { %>
-            <div class="panel panel-danger">
+            <div class="panel panel-danger" id="<%=arguments[i]._id%>">
               <div class="panel-heading">
                 <div class="row">
                   <div class="col-md-10">
                     <h3 class="panel-title"><%=arguments[i].title%></h3>
                   </div>
-                  <div class="col-md-2 text-right">
-                    <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
-                    <%=arguments[i].pros%>
-                  </div>
+                  <% if(user && user._id != null) { %>
+                    <form action="/topic/<%=topic._id%>/<%=issue._id%>/<%=arguments[i].id%>" method="post">
+                      <input type="hidden" name="user" value="<%=user._id%>">
+                      <div class="col-md-2 text-right">
+                        <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
+                        <button type="submit" name="button">
+                          <%=arguments[i].pros%>
+                        </button>
+                      </div>
+                    </form>
+                  <% } else {%>
+                    <div class="col-md-2 text-right">
+                      <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
+                        <%=arguments[i].pros%>
+                    </div>
+                  <% } %>
                 </div>
               </div>
               <div class="panel-body break-word"><p><%=arguments[i].contents%></p></div>
