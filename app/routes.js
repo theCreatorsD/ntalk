@@ -50,9 +50,10 @@ module.exports = function(app, passport, mongoose) {
       })
     })
   })
+
   // ADDTOPIC
   app.get('/addtopic', function(req, res) {
-    console.log(req.user);
+    // console.log(req.user);
     if(req.user.local.isTeacher) {
       res.render('addtopic.ejs', { user : req.user })
     } else {
@@ -162,7 +163,7 @@ module.exports = function(app, passport, mongoose) {
               console.log("error occured : find all users");
               throw err
             }
-            console.log(req.user);
+            // console.log(req.user);
             res.render('issue.ejs', {user : req.user, users : _users, topic: _topic, issue : _issue, arguments : _arguments})
           })
         })
@@ -178,7 +179,7 @@ module.exports = function(app, passport, mongoose) {
           throw err
         }
 
-        console.log(req.user.nickname);
+        // console.log(req.user.nickname);
         var argument = new Argument()
         argument.title = req.body.title
         argument.contents = req.body.contents
