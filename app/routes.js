@@ -163,8 +163,59 @@ module.exports = function(app, passport, mongoose) {
               console.log("error occured : find all users");
               throw err
             }
-            // console.log(req.user);
-            res.render('issue.ejs', {user : req.user, users : _users, topic: _topic, issue : _issue, arguments : _arguments})
+
+            console.log("start best selection");
+            var _bestAgree = []
+            var _bestDisagree = []
+            for (var i = 0; i < _arguments.length; i++) {
+              if (_arguments[i].stance && _arguments[i].proser.length > 0) {
+                _bestAgree.push(_arguments[i])
+              } else if (!_arguments[i].stance && _arguments[i].proser.length > 0){
+                _bestDisagree.push(_arguments[i])
+              }
+            }
+
+            var tmp, j
+
+
+
+
+
+            for (var i = 0; i < _bestAgree.length; i++) {
+              tmp = _bestAgree[i]
+              j = i
+              while (j > 0 && _bestAgree[j - 1].proser.length <= tmp.proser.length) {
+                _bestAgree[j] = _bestAgree[j - 1]
+                j --
+              }
+              _bestAgree[j] = tmp
+            }
+
+            for (var i = 0; i < _bestDisagree.length; i++) {
+              tmp = _bestDisagree[i]
+              j = i
+              while (j > 0 && _bestDisagree[j - 1].proser.length <= tmp.proser.length) {
+                _bestDisagree[j] = _bestDisagree[j - 1]
+                j --
+              }
+              _bestDisagree[j] = tmp
+            }
+            // for (var i = 0; i < 2; i++) {
+            //   for (var j = 0; i < 3; j++) {
+            //     if (i==0) {
+            //       console.log(_bestAgree[j].title);
+            //     } else {
+            //       console.log(_bestDisagree[j].title);
+            //     }
+            //   }
+            // }
+            console.log("----------------------------------------------------");
+            console.log(_bestAgree);
+            console.log("");
+            console.log(_bestDisagree);
+
+
+            res.render('issue.ejs', {user : req.user, users : _users, topic: _topic, issue : _issue, arguments : _arguments, bestAgree : _bestAgree, bestDisagree : _bestDisagree})
           })
         })
       })

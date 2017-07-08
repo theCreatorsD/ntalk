@@ -17,6 +17,7 @@
           var exp2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
           list[i].innerHTML = text1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>');
           // console.log(list[i].innerHTML = "메롱");
+
         }
       }
     </script>
@@ -87,6 +88,99 @@
 
     <% if(arguments != null) { %>
 
+      <!-- Best 3 -->
+      <div class="row alert alert-warning">
+        <!-- agree  -->
+        <div class="col-sm-6" >
+          <% for(i = 0 ; i < 3 ; i ++) { %>
+            <% if(bestAgree[i] != null && bestAgree[i].stance) { %>
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-md-10">
+                    <h3 class="panel-title"><%=bestAgree[i].title%></h3>
+                  </div>
+                  <% if(user && user._id != null) { %>
+                    <form action="/topic/<%=topic._id%>/<%=issue._id%>/<%=arguments[i].id%>" method="post">
+                      <input type="hidden" name="user" value="<%=user._id%>">
+                        <div class="col-md-2 text-right heart">
+                          <button type="submit" name="button" class="btn btn-default">
+                          <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
+                            <%=bestAgree[i].proser.length%>
+                          </button>
+                        </div>
+                    </form>
+                  <% } else {%>
+                    <div class="col-md-2 text-right heart">
+                      <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
+                        <%=bestAgree[i].proser.length%>
+                    </div>
+                  <% } %>
+                </div>
+              </div>
+              <div class="panel-body break-word"><p><%=bestAgree[i].contents%></p></div>
+              <div class="panel-footer">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <%=bestAgree[i].author%>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <%=bestAgree[i].date.getFullYear() + "/" + (bestAgree[i].date.getMonth() + 1) +"/"+ bestAgree[i].date.getDate() + " " + bestAgree[i].date.getHours() + ":" + bestAgree[i].date.getMinutes()%>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          <% } %>
+        </div>
+
+        <!-- disagree -->
+        <div class="col-sm-6">
+          <% for(i = 0 ; i < 3 ; i ++) { %>
+            <% if(bestDisagree[i] != null && !bestDisagree[i].stance) { %>
+            <div class="panel panel-danger">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-md-10">
+                    <h3 class="panel-title"><%=bestDisagree[i].title%></h3>
+                  </div>
+                  <% if(user && user._id != null) { %>
+                    <form action="/topic/<%=topic._id%>/<%=issue._id%>/<%=arguments[i].id%>" method="post">
+                      <input type="hidden" name="user" value="<%=user._id%>">
+                        <div class="col-md-2 text-right heart">
+                          <button type="submit" name="button" class="btn btn-default">
+                          <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
+                            <%=bestDisagree[i].proser.length%>
+                          </button>
+                        </div>
+                    </form>
+                  <% } else {%>
+                    <div class="col-md-2 text-right heart">
+                      <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
+                        <%=bestDisagree[i].proser.length%>
+                    </div>
+                  <% } %>
+                </div>
+              </div>
+              <div class="panel-body break-word"><p><%=bestDisagree[i].contents%></p></div>
+              <div class="panel-footer">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <%=bestDisagree[i].author%>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <%=bestDisagree[i].date.getFullYear() + "/" + (bestDisagree[i].date.getMonth() + 1) +"/"+ bestDisagree[i].date.getDate() + " " + bestDisagree[i].date.getHours() + ":" + bestDisagree[i].date.getMinutes()%>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          <% } %>
+        </div>
+
+
+      </div>
+      <!-- 구분자 넣기   -->
 
       <div class="col-sm-6">
         <% for(i = (arguments.length - 1) ; i >= 0 ; i --) { %>
